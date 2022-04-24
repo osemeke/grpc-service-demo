@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+option csharp_namespace = "ConsoleClient";
+
+package pin;
+
+service PinVending {
+  rpc GetToken (ApiClient) returns (ResponseModel);
+  rpc GetPin (RequestModel) returns (Pin);
+}
+
+message ApiClient {
+  string BusinessName = 1;
+  string ApiKey = 2;
+}
+
+message Pin {
+	int32 Id =1;
+	string Code =2;
+	string Serial =3;
+}
+
+message ResponseModel {
+  string Result = 1;
+}
+
+message RequestModel {
+  string ApiKey = 1;
+}
